@@ -1,22 +1,19 @@
 package com.EcommWeb.CatalogService.entities;
 
-import com.fasterxml.jackson.annotation.JsonFilter;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.io.Serializable;
+
 @Entity
 public class Product {
     @Id
     @GeneratedValue
-    @Column(name = "Id")
     private Integer Id;
-
     @Column(name = "title")
     private String title;
 
-    @Column(name = "description")
     private String description;
 
     @Column(name = "price",columnDefinition = "float default 0 ")

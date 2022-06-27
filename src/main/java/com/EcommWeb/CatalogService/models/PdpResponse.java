@@ -1,10 +1,7 @@
 package com.EcommWeb.CatalogService.models;
 
-import com.EcommWeb.CatalogService.entities.Product;
 
-import java.util.Optional;
-
-public class PdpResponse {
+public class PdpResponse  {
     private String title;
 
     private String description;
@@ -51,14 +48,5 @@ public class PdpResponse {
         return price;
     }
 
-    public static PdpResponse convertPdp (Optional<Product> pro){
-        if(!pro.isPresent()) throw new RuntimeException("id not present");
-        Product product = pro.get();
-        PdpResponse convert = new PdpResponseBuilder()
-                .title(product.getTitle())
-                .description(product.getDescription())
-                .price(product.getPrice())
-                .build();
-        return convert;
-    }
+
 }
