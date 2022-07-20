@@ -1,7 +1,7 @@
 package com.EcommWeb.CatalogService.services;
 
 import com.EcommWeb.CatalogService.entities.Product;
-import com.EcommWeb.CatalogService.exceptions.ResourceNotFoundException;
+import com.EcommWeb.CatalogService.exceptions.NotFoundException;
 import com.EcommWeb.CatalogService.models.PdpResponse;
 import com.EcommWeb.CatalogService.models.PlpResponse;
 import com.EcommWeb.CatalogService.repositories.ProductRepository;
@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -31,11 +32,12 @@ public class ProductServices {
 
     public Product findProductById (Integer product_id){
         log.info("Started findProductById function from ProductServices");
-        Product product = productRepository.findById(product_id).orElseThrow(() ->
-                new ResourceNotFoundException("id " + Integer.toString(product_id) + " is not found")
-        );
+        Optional<Product> product = productRepository.findById(product_id);
+        if(product.isEmpty()){
+            throw new NotFoundException("id not found");
+        }
         log.info("End of findProductById function from ProductServices");
-        return product;
+        return product.get();
     }
     public PdpResponse pdpService(Integer product_id){
         log.info("Started pdpService function in ProductServices");

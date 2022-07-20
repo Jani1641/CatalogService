@@ -8,6 +8,9 @@ public class PlpConverter {
         PlpResponse response = new PlpResponse.PlpResponseBuilder()
                 .title(product.getTitle())
                 .price(product.getPrice())
+                .id(product.getId())
+                .imageUrl(product.getImageUrl())
+                .category(product.getCategory())
                 .build();
         return  response;
     }

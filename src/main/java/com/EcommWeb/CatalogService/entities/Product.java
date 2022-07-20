@@ -4,14 +4,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.io.Serializable;
 
 @Entity
 public class Product {
     @Id
     @GeneratedValue
     private Integer Id;
-    @Column(name = "title")
+
     private String title;
 
     private String description;
@@ -19,13 +18,20 @@ public class Product {
     @Column(name = "price",columnDefinition = "float default 0 ")
     private float price;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
+    private String category;
+
     public Product() {
     }
 
-    public Product(String title, String description, float price) {
+    public Product(String title, String description, float price, String imageUrl, String category) {
         this.title = title;
         this.description = description;
         this.price = price;
+        this.imageUrl = imageUrl;
+        this.category = category;
     }
 
     public Integer getId() {
@@ -54,5 +60,21 @@ public class Product {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

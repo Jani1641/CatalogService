@@ -11,6 +11,8 @@ public class PdpConverter {
                 .title(product.getTitle())
                 .description(product.getDescription())
                 .price(product.getPrice())
+                .imageUrl(product.getImageUrl())
+                .category(product.getCategory())
                 .build();
         return convert;
     }
